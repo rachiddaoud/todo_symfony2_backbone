@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>TODO</title>
+
+<meta charset="UTF-8" />
+<link rel="icon" type="image/png" href="http://localhost/todo/web/todolist.png" />
+<link rel="stylesheet" href="{{ asset('bundles/todo/css/reset.css') }}"/>
+<link rel="stylesheet" href="{{ asset('bundles/todo/css/style.css') }}"/>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+</head>
+<body>
+	<div id="view">
+	</div>
+	<script type="text/html" id="template-app">
+		<div class="form-wrapper  cf">
+			<input name="todo" type="text"/>
+			<button type="button">Do it</button>
+		</div>
+		<div id="orderby">
+		Order by : <span id="sortByPriority">Priority</span> / <span id="sortByDate">Date</span>
+		</div>
+		<div id="todolist">
+			<div id="todolist-1">
+		  	</div>
+			<div id="todolist-2">
+		  	</div>
+			<div id="todolist-3">
+		  	</div>
+		</div>
+	</script>
+    <script type="text/html" id="template-todo-item">
+		<div class='todoitem'>
+			<input type="checkbox" <% if(completed) {  %> checked="checked" <%  }  %> />
+		    <strong class='todoitemtitle  <% if(completed) {  %> barred <%  }  %>'><%= title %> </strong>
+	  	</div>
+	</script>
+    <script type="text/html" id="template-changetodo-item">
+		<div class="biglayer">
+			<form id='login-form'>
+				<h1>Update your TODO</h1>
+				<div class="error"></div>
+				<div class="success"></div>
+				<input type="text" name="title" value="<%= title %>"/>
+
+				<input type="text" name="duedate" value="<%= duedate %>"/><br/>
+
+				<div class="radioinput">
+					<input type="radio" id="radio1" name="priority" value="0" <% if(priority==0) { %>checked="checked" <% } %>/><label for="radio1">High</label>
+					<input type="radio" id="radio2" name="priority" value="1" <% if(priority==1) { %>checked="checked" <% } %> /><label for="radio2">Medium</label>
+					<input type="radio" id="radio3" name="priority" value="2" <% if(priority==2) { %>checked="checked" <% } %>/><label for="radio3">Low</label>
+				</div>
+				<button class="login" type="button">Submit</button>
+		  	</form>
+	  	</div>
+	</script>
+    <script type="text/html" id="template-login-screen">
+    	<div id="login-screen" class="biglayer">
+			<form id='login-form'>
+				<h1>Register or Login</h1>
+				<div class="error"></div>
+				<div class="success"></div>
+				<div class="input-container"> 
+					<input type="text" name="username" placeholder="Username"/>
+				</div>
+				<div class="input-container"> 
+					<input type="password" name="password" placeholder="Password"/>
+				</div>
+				<button class="register" type="button">Register</button>
+				<button class="login" type="button">Login</button>
+		  	</form>
+	  	</div>
+	</script>
+	<div style="position:relative;bottom:-80px;text-align:right;color:#6B6B6B;font-weight: bold;">Created By DAOUD M.Rachid.</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="{{ asset('bundles/todo/js/jquery.cookie.js') }}"></script>
+	
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script type="text/javascript" src="{{ asset('bundles/todo/js/main.js') }}"></script>
+</body>
+</html>
